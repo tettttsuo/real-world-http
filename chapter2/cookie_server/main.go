@@ -7,13 +7,8 @@ import (
 	"net/http/httputil"
 )
 
-// curl --http1.0 -d title="The Art of Community" -d author="Jono Bacon" http://localhost:18888
-
 func handler(w http.ResponseWriter, r *http.Request) {
-	// w.Header().Add("Set-Cookie", "VISIT=TRUE; VISITA=TRUE")
-	// w.Header().Add("Set-Cookie", "")
-	w.Header().Add("WWW-Authenticate", "Basic")
-	w.WriteHeader(401)
+	w.Header().Add("Set-Cookie", "VISIT=TRUE")
 
 	dump, err := httputil.DumpRequest(r, true)
 	if err != nil {
